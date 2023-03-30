@@ -32,9 +32,11 @@ def loginScreen():
 
 
     #creat a register button
-    Button(mainscreen, text = "Register", height = "2", width = "30").pack()
+    registerbutton = Button(mainscreen, text = "Register", command = openNewwindow,  height = "2" , width = "38")
+    registerbutton.pack()
     
-
+    print(registerbutton)
+    print(loginbutton)
 
 
 #btn = Button(mainscreen,
