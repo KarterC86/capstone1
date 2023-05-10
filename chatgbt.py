@@ -19,7 +19,7 @@ def chatgpt(input_text):
         headers = headers, 
         json = data 
     )
-    print(response.status_code)
+
     if response.status_code == 200:
         response_data = json.loads(response.text)
         return response_data['choices'][0]['text']
