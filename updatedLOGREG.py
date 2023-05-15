@@ -46,6 +46,13 @@ def loginScreen():
 def loginact():
     userdata = Server('users.db')
 
+    if loginUser.get() != '' and loginPass.get() != '':
+        userdata.executeQuery(f'select Username, Password from accounts where Username like \'%{loginUser.get()}%\' and Password like \'%{loginPass.get()}%\'')
+        
+        if userdata.cursor.fetchall() != []:
+            mainscreen.destroy()
+            import chatbot
+
 def registeract():
     userdata = Server('users.db')
 
@@ -123,7 +130,7 @@ Label(inputBox, text = 'Password:').grid(row = 1, column =0)
 loginWidgets.append(inputBox)
 
 #creating an enter button 
-enterbutton = Button(mainscreen, text = "enter", command = registerScreen, height = "2" , width = "38")
+enterbutton = Button(mainscreen, text = "enter", command = loginact, height = "2" , width = "38")
 loginWidgets.append(enterbutton)
 
 #creat a back button

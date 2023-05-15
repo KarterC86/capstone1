@@ -25,3 +25,5 @@ def chatgpt(input_text):
         return response_data['choices'][0]['text']
     else:
         return 'Error: ' + str(response.status_code)
+
+
