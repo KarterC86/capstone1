@@ -1,10 +1,38 @@
 from tkinter import *
 import chatgbt
 root = Tk() 
-currentWidgets = []
-mainWidgets = []
+
 root.attributes ("-fullscreen", True)
 
+currentWidgets = []
+mainWidgets = []
+SettingsWidgets = []
+
+
+def deleteWidgets(widgetList):
+    for widget in widgetList:
+        widget.forget()
+
+def packWidgets(widgetList):
+    for widget in widgetList:
+        widget.pack()
+
+def mainScreen():
+    global currentWidgets
+
+    deleteWidgets(currentWidgets)
+    currentWidgets = mainWidgets
+    packWidgets(currentWidgets)
+
+
+def SettingScreen ():
+    global currentWidgets
+
+    root.title ("Settings")
+    root.attributes ("-fullscreen", True)
+    deleteWidgets(currentWidgets)
+    currentWidgets = SettingsWidgets
+    packWidgets(currentWidgets)
 
 
 def send(event = None):
@@ -18,9 +46,11 @@ def send(event = None):
     e.delete(0,END)
 
 
-
 #weather will be added on later 
 frame = Frame(root)
+
+mainWidgets.append(frame)
+
 txt = Text(frame)
 
 txt.grid(row = 0, column = 0)
@@ -31,14 +61,7 @@ exitButton = Button(frame, text = "exit", command = root.destroy).grid(row = 4, 
 settingsButton = Button(frame, text = "Settings", command = SettingScreen).grid(row = 4, column = 6)
 e.grid(row = 1, column = 0)
 
-
-#registerbutton = Button(root, text = "Register", command = SettingsScreen,  height = "2" , width = "38")
-#mainWidgets.append(registerbutton)
-
-frame.pack()
-
-root.title("Walter")
-
+mainScreen()
+root.title("Chatbot")
 root.bind('<Return>', send)
-
 root.mainloop()
