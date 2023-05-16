@@ -37,11 +37,8 @@ def SettingScreen ():
 
 def send(event = None):
     txt.insert(END, "\nyou => "+ e.get())
-    try:
-        txt.insert(END, f"\nBot => {chatgbt.chatgpt(e.get())[2:]}")
-
-    except:
-        txt.insert(END, "\nBot => Response not found")
+    
+    txt.insert(END, f"\nBot => {chatgbt.chatgpt(e.get())[2:]}")
 
     e.delete(0,END)
 

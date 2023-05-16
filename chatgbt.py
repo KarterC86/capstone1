@@ -3,14 +3,19 @@ import json
 #try to import this iinto ,my tkinter app.
 
 def chatgpt(input_text):
+
+    keyFile = open('capstone1\key.txt','r')
+
+    key = keyFile.readline()
+
     headers = {
         'content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Authorization': f'Bearer {key}'
     }
 
     data = { 
         'prompt' : input_text,
-        'max_tokens' : 500, 
+        'max_tokens' : 50, 
         'temperature' : 0.5
     }
 
